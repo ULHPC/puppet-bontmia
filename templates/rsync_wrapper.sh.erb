@@ -1,0 +1,3 @@
+#!/bin/bash --posix
+/usr/bin/rsync --rsync-path="<%= scope.lookupvar('bontmia::source_remote_rsync') %>" "$@"
+exit $?
