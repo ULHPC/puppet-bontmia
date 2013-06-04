@@ -5,13 +5,13 @@
 
 PREFIX="<%= scope.lookupvar('bontmia::prefix') %>"
 DEST="$PREFIX/<%= scope.lookupvar('dest_dir') %>"
-SRC="<%= scope.lookupvar('src_user') %>@<%= scope.lookupvar('src_host') %>:<%= scope.lookupvar('src_dir') %>"
+SRC="<%= scope.lookupvar('src_user') %>@<%= scope.lookupvar('src_host') %>"
 
 PATH=<%= scope.lookupvar('bontmia::prefix') %>/<%= scope.lookupvar('bontmia::params::install_dir') %>:$PATH
 
 bontmia --dest $DEST \
         --port <%= scope.lookupvar('src_port') %> \
         --rotation 0minutes0hours<%= scope.lookupvar('rotation_days') %>days<%= scope.lookupvar('rotation_weeks') %>weeks<%= scope.lookupvar('rotation_months') %>month<%= scope.lookupvar('rotation_years') %>years \
-        $SRC \
+        <% scope.lookupvar('src_dir').each do |dir| -%>$SRC:<%= dir %> <% end -%>\
         | tee <%= scope.lookupvar('bontmia::params::logdir') %>/<%= scope.lookupvar('basename') %>.log
 
