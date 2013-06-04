@@ -1,5 +1,5 @@
 name    'bontmia'
-version '0.0.1'
+version '0.0.2'
 source  'git-admin.uni.lu:puppet-repo.git'
 author  'Hyacinthe Cartiaux (hyacinthe.cartiaux@uni.lu)'
 license 'GPLv3'
@@ -8,7 +8,7 @@ description  'Configure and manage bontmia'
 project_page 'UNKNOWN'
 
 ## List of the classes defined in this module
-classes     ''
+classes     'bontmia, bontmia::common, bontmia::debian, bontmia::redhat, bontmia::params'
 ## List of the definitions defined in this module
 definitions ''
 
