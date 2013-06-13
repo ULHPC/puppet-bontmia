@@ -9,9 +9,14 @@ SRC="<%= scope.lookupvar('src_user') %>@<%= scope.lookupvar('src_host') %>"
 
 PATH=<%= scope.lookupvar('bontmia::prefix') %>/<%= scope.lookupvar('bontmia::params::install_dir') %>:$PATH
 
+echo "=== Start time: `date` ==="
+echo
+
 bontmia --dest $DEST \
         --port <%= scope.lookupvar('src_port') %> \
         --rotation 0minutes0hours<%= scope.lookupvar('rotation_days') %>days<%= scope.lookupvar('rotation_weeks') %>weeks<%= scope.lookupvar('rotation_months') %>month<%= scope.lookupvar('rotation_years') %>years \
         <% scope.lookupvar('src_dir').each do |dir| -%>$SRC:<%= dir %> <% end -%>\
         | tee <%= scope.lookupvar('bontmia::params::logdir') %>/<%= scope.lookupvar('basename') %>.log
 
+echo
+echo "=== End time: `date` ==="
