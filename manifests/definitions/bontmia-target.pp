@@ -40,8 +40,7 @@
 #        days     => '7',
 #        weeks    => '4',
 #        months   => '12',
-#        years    => '2',
-#        email    => 'hpc-sysadmins@uni.lu'
+#        years    => '2'
 #     }
 #
 # == Warnings
@@ -66,8 +65,7 @@ define bontmia::target(
     $cron_hour       = '4',
     $cron_weekday    = '*',
     $cron_monthday   = '*',
-    $cron_month      = '*',
-    $email           = ''
+    $cron_month      = '*'
 )
 {
     include bontmia::params
@@ -109,15 +107,14 @@ define bontmia::target(
 
     # cronjob
     cron { "bontmia-backup-${basename}":
-        ensure      => "${ensure}",
-        command     => "${bontmia::prefix}/${basename}.sh",
-        user        => "${bontmia::params::bontmia_user}",
-        minute      => "${cron_minute}",
-        hour        => "${cron_hour}",
-        weekday     => "${cron_weekday}",
-        monthday    => "${cron_monthday}",
-        month       => "${cron_month}",
-        environment => "MAILTO=\"${email}\""
+        ensure   => "${ensure}",
+        command  => "${bontmia::prefix}/${basename}.sh",
+        user     => "${bontmia::params::bontmia_user}",
+        minute   => "${cron_minute}",
+        hour     => "${cron_hour}",
+        weekday  => "${cron_weekday}",
+        monthday => "${cron_monthday}",
+        month    => "${cron_month}"
     }
 
 }
