@@ -94,6 +94,12 @@ class bontmia::common {
             require => Exec['install_bontmia'],
         }
 
+        # arcfour hack, double the ssh bandwidth...
+        exec { "sed -i 's/-e \"ssh/-e \"ssh -c arcfour/' ${bontmia::prefix}/${bontmia::params::install_dir}/bontmia":
+            path    => "/usr/bin:/usr/sbin:/bin",
+            unless  => "grep arcfour ${bontmia::prefix}/${bontmia::params::install_dir}/bontmia",
+        }
+
         exec { "mkdir -p ${bontmia::prefix}":
             path    => [ '/bin', '/usr/bin' ],
             unless  => "test -d ${bontmia::prefix}",
