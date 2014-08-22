@@ -27,12 +27,12 @@
 #    class { 'bontmia':
 #        ensure => 'present',
 #        prefix => '/data/test2',
-#        source_remote_rsync => 'sudo rsync'
+#        sudo   => true
 #    }
 #
 #    bontmia::target{ 'backup_hcartiaux':
 #        ensure   => 'present',
-#        dest_dir => 'hcartiaux',
+#        dest_dir => '/data/test2/hcartiaux',
 #        src_user => 'localadmin',
 #        src_host => 'nfs.chaos',
 #        src_dir  => '/export/users/homedirs/hcartiaux',
@@ -95,16 +95,16 @@ define bontmia::target(
         require => Exec['install_bontmia']
     }
 
-    exec { "mkdir -p ${bontmia::prefix}/${dest_dir}":
+    exec { "mkdir -p ${dest_dir}":
         path    => [ '/bin', '/usr/bin' ],
-        unless  => "test -d ${bontmia::prefix}/${dest_dir}",
+        unless  => "test -d ${dest_dir}",
     }
-    file { "${bontmia::prefix}/${dest_dir}":
+    file { "${dest_dir}":
         ensure  => 'directory',
         owner   => "${bontmia::params::configfile_owner}",
         group   => "${bontmia::params::configfile_group}",
         mode    => "${bontmia::params::configfile_mode}",
-        require => Exec["mkdir -p ${bontmia::prefix}/${dest_dir}"]
+        require => Exec["mkdir -p ${dest_dir}"]
     }
 
     # cronjob
