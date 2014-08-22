@@ -35,9 +35,9 @@ class bontmia::params {
         default => "${bontmia_ensure}"
     }
 
-    $source_remote_rsync = $bontmia_source_remote_rsync ? {
-        ''      => 'rsync',
-        default => "${bontmia_source_remote_rsync}"
+    $sudo = $bontmia_sudo ? {
+        ''      => false,
+        default => "${bontmia_sudo}"
     }
 
     #### MODULE INTERNAL VARIABLES  #########
@@ -46,12 +46,13 @@ class bontmia::params {
 
     # ensure the presence (or absence) of bontmia
     $url = $bontmia_url ? {
-        ''      => 'http://folk.uio.no/johnen/bontmia/bontmia-0.14.tar.gz',
+#       ''      => 'http://folk.uio.no/johnen/bontmia/bontmia-0.14.tar.gz',
+        ''      => 'https://github.com/hcartiaux/bontmia/archive/v0.16.tar.gz',
         default => "${bontmia_url}"
     }
     # ensure the presence (or absence) of bontmia
     $install_dir = $bontmia_install_dir ? {
-        ''      => 'bontmia-0.14',
+        ''      => 'bontmia-0.16',
         default => "${bontmia_install_dir}"
     }
 

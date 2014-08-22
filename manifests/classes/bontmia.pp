@@ -30,7 +30,7 @@
 #         class { 'bontmia':
 #             ensure => 'present',
 #             prefix => '/data/',
-#             source_remote_rsync => 'sudo rsync'
+#             sudo   => true
 #         }
 #
 # == Warnings
@@ -44,7 +44,7 @@
 class bontmia(
     $ensure = $bontmia::params::ensure,
     $prefix,
-    $source_remote_rsync = $bontmia::params::source_remote_rsync
+    $sudo   = $bontmia::params::sudo
 )
 inherits bontmia::params
 {
@@ -76,40 +76,28 @@ class bontmia::common {
 
     if $bontmia::ensure == 'present' {
 
-        exec { 'install_bontmia':
-            command => "curl -o - ${bontmia::params::url} | tar xzvf -",
-            cwd     => "${bontmia::prefix}",
-            path    => '/usr/bin:/bin:/sbin',
-            creates => "${bontmia::prefix}/${bontmia::params::install_dir}",
-            user    => "${bontmia::params::configfile_owner}",
-        }
-
-        file { 'rsync':
-            path    => "${bontmia::prefix}/${bontmia::params::install_dir}/rsync",
-            owner   => "${bontmia::params::configfile_owner}",
-            group   => "${bontmia::params::configfile_group}",
-            mode    => "${bontmia::params::configfile_mode}",
-            ensure  => "${bontmia::ensure}",
-            content => template('bontmia/rsync_wrapper.sh.erb'),
-            require => Exec['install_bontmia'],
-        }
-
-        # arcfour hack, double the ssh bandwidth...
-        exec { "sed -i 's/-e \"ssh/-e \"ssh -c arcfour/' ${bontmia::prefix}/${bontmia::params::install_dir}/bontmia":
-            path    => "/usr/bin:/usr/sbin:/bin",
-            unless  => "grep arcfour ${bontmia::prefix}/${bontmia::params::install_dir}/bontmia",
-        }
-
         exec { "mkdir -p ${bontmia::prefix}":
             path    => [ '/bin', '/usr/bin' ],
             unless  => "test -d ${bontmia::prefix}",
         }
+
         file { "${bontmia::prefix}":
             ensure  => 'directory',
             owner   => "${bontmia::params::configfile_owner}",
             group   => "${bontmia::params::configfile_group}",
             mode    => "${bontmia::params::configfile_mode}",
             require => Exec["mkdir -p ${bontmia::prefix}"]
+        } ->
+        exec { 'install_bontmia':
+            command => "curl -Lo - ${bontmia::params::url} | tar xzvf -",
+            cwd     => "${bontmia::prefix}",
+            path    => '/usr/bin:/bin:/sbin',
+            creates => "${bontmia::prefix}/${bontmia::params::install_dir}",
+            user    => "${bontmia::params::configfile_owner}",
+        } -> # arcfour hack, double the ssh bandwidth...
+        exec { "sed -i 's/-e \"ssh/-e \"ssh -c arcfour/' ${bontmia::prefix}/${bontmia::params::install_dir}/bontmia":
+            path    => "/usr/bin:/usr/sbin:/bin",
+            unless  => "grep arcfour ${bontmia::prefix}/${bontmia::params::install_dir}/bontmia",
         }
 
         # Prepare the log directory

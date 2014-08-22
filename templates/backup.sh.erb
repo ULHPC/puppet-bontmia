@@ -1,7 +1,6 @@
 #!/bin/bash --posix
 #
 # Backup script, based on bontmia: http://folk.uio.no/johnen/bontmia/
-# A custom version of an rsync wrapper in an alternate file is used, to ease local customization
 
 PREFIX="<%= scope.lookupvar('bontmia::prefix') %>"
 DEST="$PREFIX/<%= scope.lookupvar('dest_dir') %>"
@@ -12,8 +11,8 @@ PATH=<%= scope.lookupvar('bontmia::prefix') %>/<%= scope.lookupvar('bontmia::par
 echo "=== Start time: `date` ==="
 echo
 
-bontmia --dest $DEST \
-        --port <%= scope.lookupvar('src_port') %> \
+bontmia --dest $DEST <% if scope.lookupvar('bontmia::sudo') -%>--sudo<% end %> \
+        --port <%= scope.lookupvar('src_port') %>  \
         --rotation 0minutes0hours<%= scope.lookupvar('rotation_days') %>days<%= scope.lookupvar('rotation_weeks') %>weeks<%= scope.lookupvar('rotation_months') %>month<%= scope.lookupvar('rotation_years') %>years \
         <% scope.lookupvar('src_dir').each do |dir| -%>$SRC:<%= dir %> <% end -%>\
         | tee <%= scope.lookupvar('bontmia::params::logdir') %>/<%= scope.lookupvar('basename') %>.log
