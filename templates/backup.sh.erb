@@ -2,8 +2,7 @@
 #
 # Backup script, based on bontmia: http://folk.uio.no/johnen/bontmia/
 
-PREFIX="<%= scope.lookupvar('bontmia::prefix') %>"
-DEST="$PREFIX/<%= scope.lookupvar('dest_dir') %>"
+DEST="<%= scope.lookupvar('dest_dir') %>"
 SRC="<%= scope.lookupvar('src_user') %>@<%= scope.lookupvar('src_host') %>"
 
 PATH=<%= scope.lookupvar('bontmia::prefix') %>/<%= scope.lookupvar('bontmia::params::install_dir') %>:$PATH
