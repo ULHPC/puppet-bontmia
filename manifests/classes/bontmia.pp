@@ -94,10 +94,6 @@ class bontmia::common {
             path    => '/usr/bin:/bin:/sbin',
             creates => "${bontmia::prefix}/${bontmia::params::install_dir}",
             user    => "${bontmia::params::configfile_owner}",
-        } -> # arcfour hack, double the ssh bandwidth...
-        exec { "sed -i 's/-e \"ssh/-e \"ssh -c arcfour/' ${bontmia::prefix}/${bontmia::params::install_dir}/bontmia":
-            path    => "/usr/bin:/usr/sbin:/bin",
-            unless  => "grep arcfour ${bontmia::prefix}/${bontmia::params::install_dir}/bontmia",
         }
 
         # Prepare the log directory
