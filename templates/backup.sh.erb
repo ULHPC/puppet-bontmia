@@ -3,7 +3,11 @@
 # Backup script, based on bontmia: http://folk.uio.no/johnen/bontmia/
 
 DEST="<%= scope.lookupvar('dest_dir') %>"
-SRC="<%= scope.lookupvar('src_user') %>@<%= scope.lookupvar('src_host') %>"
+<% if scope.lookupvar('src_host') != '' -%>
+SRC="<%= scope.lookupvar('src_user') %>@<%= scope.lookupvar('src_host') %>:"
+<% else -%>
+SRC=""
+<% end -%>
 
 PATH=<%= scope.lookupvar('bontmia::prefix') %>/<%= scope.lookupvar('bontmia::params::install_dir') %>:$PATH
 
@@ -15,7 +19,7 @@ echo                              | tee -a $LOGFILE
 bontmia --dest $DEST <% if scope.lookupvar('bontmia::sudo') -%>--sudo<% end %> \
         --port <%= scope.lookupvar('src_port') %> --cipher arcfour \
         --rotation 0minutes0hours<%= scope.lookupvar('rotation_days') %>days<%= scope.lookupvar('rotation_weeks') %>weeks<%= scope.lookupvar('rotation_months') %>month<%= scope.lookupvar('rotation_years') %>years \
-        <% scope.lookupvar('src_dir').each do |dir| -%>$SRC:<%= dir %> <% end -%>\
+        <% scope.lookupvar('src_dir').each do |dir| -%>$SRC<%= dir %> <% end -%>\
                                   | tee -a $LOGFILE
 
 echo                              | tee -a $LOGFILE
