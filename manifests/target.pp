@@ -52,11 +52,11 @@
 # [Remember: No empty lines between comments and class definition]
 #
 define bontmia::target(
-    $ensure          = 'present',
     $dest_dir,
-    $src_user        = 'localadmin',
     $src_host,
     $src_dir,
+    $ensure          = 'present',
+    $src_user        = 'localadmin',
     $src_port        = '8022',
     $rotation_days   = '7',
     $rotation_weeks  = '4',
@@ -87,36 +87,36 @@ define bontmia::target(
 
     # bash script
     file { "${bontmia::prefix}/${basename}.sh":
-        owner   => "${bontmia::params::configfile_owner}",
-        group   => "${bontmia::params::configfile_group}",
-        mode    => "${bontmia::params::configfile_mode}",
-        ensure  => "${ensure}",
-        content => template("bontmia/backup.sh.erb"),
+        ensure  => $ensure,
+        owner   => $bontmia::params::configfile_owner,
+        group   => $bontmia::params::configfile_group,
+        mode    => $bontmia::params::configfile_mode,
+        content => template('bontmia/backup.sh.erb'),
         require => Exec['install_bontmia']
     }
 
     exec { "mkdir -p ${dest_dir}":
-        path    => [ '/bin', '/usr/bin' ],
-        unless  => "test -d ${dest_dir}",
+        path   => [ '/bin', '/usr/bin' ],
+        unless => "test -d ${dest_dir}",
     }
-    file { "${dest_dir}":
+    file { $dest_dir:
         ensure  => 'directory',
-        owner   => "${bontmia::params::configfile_owner}",
-        group   => "${bontmia::params::configfile_group}",
-        mode    => "${bontmia::params::configfile_mode}",
+        owner   => $bontmia::params::configfile_owner,
+        group   => $bontmia::params::configfile_group,
+        mode    => $bontmia::params::configfile_mode,
         require => Exec["mkdir -p ${dest_dir}"]
     }
 
     # cronjob
     cron { "bontmia-backup-${basename}":
-        ensure      => "${ensure}",
+        ensure      => $ensure,
         command     => "${bontmia::prefix}/${basename}.sh",
-        user        => "${bontmia::params::bontmia_user}",
-        minute      => "${cron_minute}",
-        hour        => "${cron_hour}",
-        weekday     => "${cron_weekday}",
-        monthday    => "${cron_monthday}",
-        month       => "${cron_month}",
+        user        => $bontmia::params::bontmia_user,
+        minute      => $cron_minute,
+        hour        => $cron_hour,
+        weekday     => $cron_weekday,
+        monthday    => $cron_monthday,
+        month       => $cron_month,
         environment => "MAILTO=\"${email}\""
     }
 

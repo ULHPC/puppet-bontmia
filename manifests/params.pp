@@ -30,14 +30,14 @@ class bontmia::params {
     ###########################################
 
     # ensure the presence (or absence) of bontmia
-    $ensure = $bontmia_ensure ? {
+    $ensure = $::bontmia_ensure ? {
         ''      => 'present',
-        default => "${bontmia_ensure}"
+        default => $::bontmia_ensure
     }
 
-    $sudo = $bontmia_sudo ? {
+    $sudo = $::bontmia_sudo ? {
         ''      => false,
-        default => "${bontmia_sudo}"
+        default => $::bontmia_sudo
     }
 
     #### MODULE INTERNAL VARIABLES  #########
@@ -45,15 +45,15 @@ class bontmia::params {
     #######################################
 
     # ensure the presence (or absence) of bontmia
-    $url = $bontmia_url ? {
+    $url = $::bontmia_url ? {
 #       ''      => 'http://folk.uio.no/johnen/bontmia/bontmia-0.14.tar.gz',
         ''      => 'https://github.com/hcartiaux/bontmia/archive/v0.18.1.tar.gz',
-        default => "${bontmia_url}"
+        default => $::bontmia_url
     }
     # ensure the presence (or absence) of bontmia
-    $install_dir = $bontmia_install_dir ? {
+    $install_dir = $::bontmia_install_dir ? {
         ''      => 'bontmia-0.18.1',
-        default => "${bontmia_install_dir}"
+        default => $::bontmia_install_dir
     }
 
     # Log directory
