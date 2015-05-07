@@ -7,14 +7,14 @@ is organized.
 
 ### Directory Layout
 
-       ulhpc-bontmia/       # Main directory 
+       ULHPC/bontmia/       # Main directory 
            `-- metadata.json     # Module configuration - cf [here](https://docs.puppetlabs.com/puppet/latest/reference/modules_publishing.html#write-a-metadatajson-file)
            `-- README.md         # This file
            `-- files/            # Contains static files, which managed nodes can download
            `-- lib/              # custom facts/type/provider definitions
            `-- manifests/
                 `-- init.pp      # Main manifests file which defines the bontmia class 
-                `-- params.pp    # ulhpc-bontmia module variables 
+                `-- params.pp    # ULHPC/bontmia module variables 
                 `-- mydef.pp     # defines the bontmia::mydef  definition   
            `-- templates/        # Module ERB template files
            `-- tests/            # Contains examples showing how to declare the module’s classes and defined type
