@@ -58,7 +58,7 @@ inherits bontmia::params
         debian, ubuntu:         { include bontmia::debian }
         redhat, fedora, centos: { include bontmia::redhat }
         default: {
-            fail("Module $module_name is not supported on $operatingsystem")
+            fail("Module ${module_name} is not supported on ${operatingsystem}")
         }
     }
 }
@@ -77,31 +77,31 @@ class bontmia::common {
     if $bontmia::ensure == 'present' {
 
         exec { "mkdir -p ${bontmia::prefix}":
-            path    => [ '/bin', '/usr/bin' ],
-            unless  => "test -d ${bontmia::prefix}",
+            path   => [ '/bin', '/usr/bin' ],
+            unless => "test -d ${bontmia::prefix}",
         }
 
-        file { "${bontmia::prefix}":
+        file { $bontmia::prefix:
             ensure  => 'directory',
-            owner   => "${bontmia::params::configfile_owner}",
-            group   => "${bontmia::params::configfile_group}",
-            mode    => "${bontmia::params::configfile_mode}",
+            owner   => $bontmia::params::configfile_owner,
+            group   => $bontmia::params::configfile_group,
+            mode    => $bontmia::params::configfile_mode,
             require => Exec["mkdir -p ${bontmia::prefix}"]
         } ->
         exec { 'install_bontmia':
             command => "curl -Lo - ${bontmia::params::url} | tar xzvf -",
-            cwd     => "${bontmia::prefix}",
+            cwd     => $bontmia::prefix,
             path    => '/usr/bin:/bin:/sbin',
             creates => "${bontmia::prefix}/${bontmia::params::install_dir}",
-            user    => "${bontmia::params::configfile_owner}",
+            user    => $bontmia::params::configfile_owner,
         }
 
         # Prepare the log directory
-        file { "${bontmia::params::logdir}":
-            ensure => 'directory',
-            owner  => "${bontmia::params::logdir_owner}",
-            group  => "${bontmia::params::logdir_group}",
-            mode   => "${bontmia::params::logdir_mode}",
+        file { $bontmia::params::logdir:
+            ensure  => 'directory',
+            owner   => $bontmia::params::logdir_owner,
+            group   => $bontmia::params::logdir_group,
+            mode    => $bontmia::params::logdir_mode,
             require => Exec['install_bontmia'],
         }
 
