@@ -49,6 +49,11 @@ class bontmia::common {
     else
     {
         # Here $bontmia::ensure is 'absent'
+        exec { 'remove_bontmia':
+            command => "rm -rf ${bontmia::prefix}/${bontmia::params::install_dir} ${bontmia::params::logdir}",
+            path    => '/usr/bin:/bin:/sbin',
+            onlyif  => "test -d ${bontmia::prefix}/${bontmia::params::install_dir} || test -d ${bontmia::params::logdir}",
+        }
 
     }
 
@@ -59,12 +64,12 @@ class bontmia::common {
 # = Class: bontmia::debian
 #
 # Specialization class for Debian systems
-class bontmia::debian inherits bontmia::common { }
+class bontmia::common::debian inherits bontmia::common { }
 
 # ------------------------------------------------------------------------------
 # = Class: bontmia::redhat
 #
 # Specialization class for Redhat systems
-class bontmia::redhat inherits bontmia::common { }
+class bontmia::common::redhat inherits bontmia::common { }
 
 

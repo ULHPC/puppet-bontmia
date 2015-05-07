@@ -16,5 +16,10 @@
 #      sudo puppet apply -t /vagrant/tests/init.pp
 #
 node default {
-    include bontmia
+
+    class { 'bontmia':
+        ensure => 'present',
+        prefix => '/tmp/bontmia'
+    }
+
 }
