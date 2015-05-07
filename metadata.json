@@ -25,5 +25,17 @@
       ]
     }
   ],
-  "tags": ["bontmia rsync backup"]
+  "tags": [
+    "bontmia rsync backup"
+  ],
+  "classes": [
+    "bontmia",
+    "bontmia::common",
+    "bontmia::debian",
+    "bontmia::params",
+    "bontmia::redhat"
+  ],
+  "definitions": [
+    "bontmia::target"
+  ]
 }
