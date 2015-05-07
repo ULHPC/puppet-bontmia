@@ -52,11 +52,11 @@
 # [Remember: No empty lines between comments and class definition]
 #
 define bontmia::target(
-    $ensure          = 'present',
     $dest_dir,
-    $src_user        = 'localadmin',
     $src_host,
     $src_dir,
+    $ensure          = 'present',
+    $src_user        = 'localadmin',
     $src_port        = '8022',
     $rotation_days   = '7',
     $rotation_weeks  = '4',
@@ -87,10 +87,10 @@ define bontmia::target(
 
     # bash script
     file { "${bontmia::prefix}/${basename}.sh":
+        ensure  => $ensure,
         owner   => $bontmia::params::configfile_owner,
         group   => $bontmia::params::configfile_group,
         mode    => $bontmia::params::configfile_mode,
-        ensure  => $ensure,
         content => template('bontmia/backup.sh.erb'),
         require => Exec['install_bontmia']
     }

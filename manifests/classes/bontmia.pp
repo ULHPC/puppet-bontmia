@@ -58,7 +58,7 @@ inherits bontmia::params
         debian, ubuntu:         { include bontmia::debian }
         redhat, fedora, centos: { include bontmia::redhat }
         default: {
-            fail("Module ${module_name} is not supported on ${operatingsystem}")
+            fail("Module ${module_name} is not supported on ${::operatingsystem}")
         }
     }
 }

@@ -15,7 +15,7 @@
 
 include 'bontmia::params'
 
-$names = ["ensure", "protocol", "port", "packagename"]
+$names = ['ensure', 'protocol', 'port', 'packagename']
 
 notice("bontmia::params::ensure = ${bontmia::params::ensure}")
 notice("bontmia::params::protocol = ${bontmia::params::protocol}")
