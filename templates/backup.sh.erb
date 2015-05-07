@@ -17,7 +17,7 @@ echo "=== Start time: `date` ===" | tee -a $LOGFILE
 echo                              | tee -a $LOGFILE
 
 bontmia --dest $DEST <% if scope.lookupvar('bontmia::sudo') -%>--sudo<% end %> \
-        --port <%= scope.lookupvar('src_port') %> --cipher arcfour \
+<% if ! scope.lookupvar('src_host').empty? -%>         --port <%= scope.lookupvar('src_port') %> --cipher arcfour \ <% end -%>
         --rotation 0minutes0hours<%= scope.lookupvar('rotation_days') %>days<%= scope.lookupvar('rotation_weeks') %>weeks<%= scope.lookupvar('rotation_months') %>month<%= scope.lookupvar('rotation_years') %>years \
         <% scope.lookupvar('src_dir').each do |dir| -%>$SRC<%= dir %> <% end -%>\
                                   | tee -a $LOGFILE
