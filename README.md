@@ -2,13 +2,13 @@
 
 # Bontmia Puppet Module 
 
-[![Puppet Forge](http://img.shields.io/puppetforge/v/ulhpc/bontmia.svg)](https://forge.puppetlabs.com/ulhpc/bontmia)
+[![Puppet Forge](http://img.shields.io/puppetforge/v/ULHPC/bontmia.svg)](https://forge.puppetlabs.com/ulhpc/bontmia)
 [![License](http://img.shields.io/:license-gpl3.0-blue.svg)](LICENSE)
 ![Supported Platforms](http://img.shields.io/badge/platform-debian-lightgrey.svg)
 
 Configure and manage bontmia
 
-      Copyright (c) 2015 H. Cartiaux <Hyacinthe.Cartiaux@uni.lu>
+      Copyright (c) 2015 H. Cartiaux <hpc-sysadmins@uni.lu>
       
 
 * [Online Project Page](https://github.com/ULHPC/puppet-bontmia)  -- [Sources](https://github.com/ULHPC/puppet-bontmia) -- [Issues](https://github.com/ULHPC/puppet-bontmia/issues)
@@ -63,18 +63,18 @@ available with [Librarian puppet](http://librarian-puppet.com/) or
 [r10k](https://github.com/adrienthebo/r10k) by adding the following entry:
 
      # Modules from the Puppet Forge
-     mod "ulhpc-bontmia"
+     mod "ULHPC/bontmia"
 
 or, if you prefer to work on the git version: 
 
-     mod "ulhpc-bontmia", 
+     mod "ULHPC/bontmia", 
          :git => https://github.com/ULHPC/puppet-bontmia,
          :ref => production 
 
 ## Issues / Feature request
 
 You can submit bug / issues / feature request using the 
-[ulhpc-bontmia Puppet Module Tracker](https://github.com/ULHPC/puppet-bontmia/issues). 
+[ULHPC/bontmia Puppet Module Tracker](https://github.com/ULHPC/puppet-bontmia/issues). 
 
 
 ## Developments / Contributing to the code 
