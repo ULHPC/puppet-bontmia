@@ -1,8 +1,8 @@
 {
-  "name": "ulhpc-bontmia",
+  "name": "ULHPC/bontmia",
   "version": "0.2.1",
   "author": "H. Cartiaux",
-  "mail": "Hyacinthe.Cartiaux@uni.lu",
+  "mail": "hpc-sysadmins@uni.lu",
   "summary": "Configure and manage bontmia",
   "description": "Configure and manage bontmia",
   "license": "gpl-3.0",
