@@ -75,6 +75,8 @@ define bontmia::target(
     # $name is provided at define invocation
     $basename = $name
 
+    $src_dir_array = any2array($src_dir)
+
     if ! ($ensure in [ 'present', 'absent' ]) {
         fail("bontmia::target 'ensure' parameter must be set to either 'absent' or 'present'")
     }
