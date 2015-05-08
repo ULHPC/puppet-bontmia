@@ -3,8 +3,8 @@
 # Bontmia Puppet Module 
 
 [![Puppet Forge](http://img.shields.io/puppetforge/v/ULHPC/bontmia.svg)](https://forge.puppetlabs.com/ulhpc/bontmia)
-[![License](http://img.shields.io/:license-gpl3.0-blue.svg)](LICENSE)
-![Supported Platforms](http://img.shields.io/badge/platform-debian-lightgrey.svg)
+[![License](http://img.shields.io/:license-GPL3.0-blue.svg)](LICENSE)
+![Supported Platforms](http://img.shields.io/badge/platform-debian|centos-lightgrey.svg)
 
 Configure and manage bontmia
 
