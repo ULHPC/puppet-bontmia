@@ -59,17 +59,3 @@ class bontmia::common {
 
 }
 
-
-# ------------------------------------------------------------------------------
-# = Class: bontmia::debian
-#
-# Specialization class for Debian systems
-class bontmia::common::debian inherits bontmia::common { }
-
-# ------------------------------------------------------------------------------
-# = Class: bontmia::redhat
-#
-# Specialization class for Redhat systems
-class bontmia::common::redhat inherits bontmia::common { }
-
-
