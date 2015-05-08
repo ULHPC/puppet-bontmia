@@ -16,7 +16,22 @@
 #
 # [*ensure*]
 #   default to 'present', can be 'absent'.
-#   Default: 'present'
+#
+# [*dest_dir*]
+#   Destination directory of the backup
+#
+# [*src_dir*], [*src_host*], [*src_user*], [*src_port*]
+#   Defines the backup source.
+#   If src_host is not set, it assumes that we want to backup the local directory src_dir
+#
+# [*rotation_days*], [*rotation_weeks*], [*rotation_months*], [*rotation_years*]
+#   Set-up the rotation policy with these values, see the bontmia documentation for more information
+#
+# [*cron_minute*], [*cron_hour*], [*cron_weekday*], [*cron_monthday*], [*cron_month*]
+#   Set-up a cronjob with these settings
+#
+# [*email*]
+#   Send the execution output to this email address
 #
 # == Sample usage:
 #
