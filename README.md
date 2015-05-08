@@ -24,7 +24,7 @@ It implements the following elements:
 * __classes__:
   * `bontmia`
 * __definitions__:
-  * `bontmia::target`:
+  * `bontmia::target`
  
 The various operations of this repository are piloted from a `Rakefile` which
 assumes that you have [RVM](https://rvm.io/) installed on your system.
