@@ -15,8 +15,11 @@ Configure and manage bontmia
 
 ## Synopsis
 
-Configure and manage bontmia
-This module implements the following elements: 
+This module configures a bontmia installation and the backup tasks.
+
+Note that we use a [forked version of bontmia](https://github.com/hcartiaux/bontmia).
+
+It implements the following elements:
 
 * __classes__:
   * `bontmia`
