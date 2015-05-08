@@ -26,7 +26,9 @@
     }
   ],
   "tags": [
-    "bontmia rsync backup"
+    "bontmia",
+    "rsync",
+    "backup"
   ],
   "classes": [
     "bontmia",
