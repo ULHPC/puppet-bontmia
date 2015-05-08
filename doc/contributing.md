@@ -129,7 +129,7 @@ merge all things the way they should be.
 
 # Contributing Notes
 
-This project is released under the terms of the [gpl-3.0 Licence](LICENSE). 
+This project is released under the terms of the [GPL-3.0 Licence](LICENSE). 
 So you are more than welcome to contribute to its development as follows: 
 
 1. Fork it
