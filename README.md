@@ -18,9 +18,10 @@ Configure and manage bontmia
 Configure and manage bontmia
 This module implements the following elements: 
 
-* __classes__:     `bontmia`
-* __definitions__: 
-  * `bontmia::mydef`: 
+* __classes__:
+  * `bontmia`
+* __definitions__:
+  * `bontmia::target`:
  
 The various operations of this repository are piloted from a `Rakefile` which
 assumes that you have [RVM](https://rvm.io/) installed on your system.
@@ -33,28 +34,55 @@ See [`metadata.json`](metadata.json). In particular, this module depends on
 
 ## General Parameters
 
-See [manifests/params.pp](manifests/params.pp)
+See:
+
+* [manifests/params.pp](manifests/params.pp)
+* the headers of [manifests/bontmia.pp](manifests/bontmia.pp)
+* the headers of [manifests/target.pp](manifests/target.pp)
 
 ## Overview and Usage
 
 ### class `bontmia`
 
-     include ' bontmia'
+     class { 'bontmia':
+         ensure => 'present',
+         prefix => '/data/bontmia',
+         sudo   => true
+     }
 
-### definition `bontmia::mydef`
+### definition `bontmia::target`
 
-The definition `bontmia::mydef` provides ...
+The definition `bontmia::target` permits to set-up one backup task.
 This definition accepts the following parameters:
 
-* `$ensure`: default to 'present', can be 'absent'
-* `$content`: specify the contents of the directive as a string
-* `$source`: copy a file as the content of the directive.
+* `ensure`: default to 'present', can be 'absent'.
+* `dest_dir`: destination directory of the backup
+* `src_dir`, `src_host`, `src_user`, `src_port`: defines the backup source.
+  If `src_host` is not set, it assumes that we want to backup the local directory `src_dir`.
+
+* `rotation_days`, `rotation_weeks`, `rotation_months`, `rotation_years`:
+  set-up the rotation policy with these values, see the bontmia documentation for more information
+
+* `cron_minute`, `cron_hour`, `cron_weekday`, `cron_monthday`, `cron_month`:
+  set-up a cronjob with these settings
+
+* `email`: send the execution output to this email address
 
 Example:
 
-      bontmia::mydef {'entry':
-           content => "entry\n",
-      }
+     bontmia::target{ 'backup_hcartiaux':
+         ensure   => 'present',
+         dest_dir => '/data/test/hcartiaux',
+         src_user => 'localadmin',
+         src_host => 'nfs.chaos',
+         src_dir  => '/export/users/homedirs/hcartiaux',
+         src_port => '2222',
+         days     => '7',
+         weeks    => '4',
+         months   => '12',
+         years    => '2',
+         email    => 'hpc-sysadmins@uni.lu'
+     }
 
 ## Librarian-Puppet / R10K Setup
 
