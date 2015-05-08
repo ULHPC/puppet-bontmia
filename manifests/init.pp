@@ -11,6 +11,8 @@
 # == Parameters:
 #
 # $ensure:: *Default*: 'present'. Ensure the presence (or absence) of bontmia
+# $sudo::   *Default*: false.   Execute rsync with sudo on the remote host
+# $prefix:: Installation directory
 #
 # == Actions:
 #
@@ -22,10 +24,8 @@
 #
 # == Sample Usage:
 #
-#     import bontmia
-#
-# You can then specialize the various aspects of the configuration,
-# for instance:
+# You can specialize the various aspects of the configuration, the installation
+# prefix is a mandatory parameter, for instance:
 #
 #         class { 'bontmia':
 #             ensure => 'present',

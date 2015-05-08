@@ -1,11 +1,11 @@
 {
   "name": "ULHPC/bontmia",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "H. Cartiaux",
   "mail": "hpc-sysadmins@uni.lu",
   "summary": "Configure and manage bontmia",
   "description": "Configure and manage bontmia",
-  "license": "gpl-3.0",
+  "license": "GPL-3.0",
   "source": "https://github.com/ULHPC/puppet-bontmia",
   "project_page": "https://github.com/ULHPC/puppet-bontmia",
   "issues_url": "https://github.com/ULHPC/puppet-bontmia/issues",
@@ -13,7 +13,7 @@
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
-      "version_range": ">= 1.0.0"
+      "version_requirement": ">=4.2.2 <5.0.0"
     }
   ],
   "operatingsystem_support": [
@@ -31,9 +31,9 @@
   "classes": [
     "bontmia",
     "bontmia::common",
-    "bontmia::debian",
-    "bontmia::params",
-    "bontmia::redhat"
+    "bontmia::common::debian",
+    "bontmia::common::redhat",
+    "bontmia::params"
   ],
   "definitions": [
     "bontmia::target"
