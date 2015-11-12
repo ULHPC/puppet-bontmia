@@ -45,5 +45,6 @@
   ],
   "definitions": [
     "bontmia::target"
-  ]
+  ],
+  "docs_project": "ulhpc-puppet-bontmia"
 }
