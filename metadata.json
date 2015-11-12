@@ -1,6 +1,6 @@
 {
   "name": "ULHPC/bontmia",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": "H. Cartiaux",
   "mail": "hpc-sysadmins@uni.lu",
   "summary": "Configure and manage bontmia",
@@ -45,5 +45,6 @@
   ],
   "definitions": [
     "bontmia::target"
-  ]
+  ],
+  "docs_project": "ulhpc-puppet-bontmia"
 }

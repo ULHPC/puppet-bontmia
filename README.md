@@ -3,8 +3,8 @@
 # Bontmia Puppet Module 
 
 [![Puppet Forge](http://img.shields.io/puppetforge/v/ULHPC/bontmia.svg)](https://forge.puppetlabs.com/ulhpc/bontmia)
-[![License](http://img.shields.io/:license-gpl3.0-blue.svg)](LICENSE)
-![Supported Platforms](http://img.shields.io/badge/platform-debian-lightgrey.svg)
+[![License](http://img.shields.io/:license-GPL3.0-blue.svg)](LICENSE)
+![Supported Platforms](http://img.shields.io/badge/platform-debian|centos-lightgrey.svg)
 
 Configure and manage bontmia
 
@@ -24,7 +24,7 @@ It implements the following elements:
 * __classes__:
   * `bontmia`
 * __definitions__:
-  * `bontmia::target`:
+  * `bontmia::target`
  
 The various operations of this repository are piloted from a `Rakefile` which
 assumes that you have [RVM](https://rvm.io/) installed on your system.

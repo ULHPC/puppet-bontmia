@@ -73,6 +73,7 @@ define bontmia::target(
     $src_host        = '',
     $src_user        = 'localadmin',
     $src_port        = '8022',
+    $ssh_cipher      = 'arcfour',
     $rotation_days   = '7',
     $rotation_weeks  = '4',
     $rotation_months = '12',
