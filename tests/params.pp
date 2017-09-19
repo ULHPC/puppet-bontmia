@@ -13,7 +13,7 @@
 #
 #
 
-include 'bontmia::params'
+include '::bontmia::params'
 
 $names = ['ensure', 'sudo', 'url', 'install_dir', 'logdir', 'logdir_mode', 'logdir_owner', 'logdir_group', 'configfile', 'configfile_init', 'configfile_mode', 'configfile_owner', 'configfile_group', 'bontmia_user']
 
