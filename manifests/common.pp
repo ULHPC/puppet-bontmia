@@ -12,7 +12,7 @@
 class bontmia::common {
 
     # Load the variables used in this module. Check the bontmia-params.pp file
-    require bontmia::params
+    require ::bontmia::params
 
     if $bontmia::ensure == 'present' {
 
@@ -26,9 +26,9 @@ class bontmia::common {
             owner   => $bontmia::params::configfile_owner,
             group   => $bontmia::params::configfile_group,
             mode    => $bontmia::params::configfile_mode,
-            require => Exec["mkdir -p ${bontmia::prefix}"]
-        } ->
-        exec { 'install_bontmia':
+            require => Exec["mkdir -p ${bontmia::prefix}"],
+        }
+        -> exec { 'install_bontmia':
             command => "curl -Lo - ${bontmia::params::url} | tar xzvf -",
             cwd     => $bontmia::prefix,
             path    => '/usr/bin:/bin:/sbin',

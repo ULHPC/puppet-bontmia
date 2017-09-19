@@ -86,7 +86,7 @@ define bontmia::target(
     $email           = ''
 )
 {
-    include bontmia::params
+    include ::bontmia::params
 
     # $name is provided at define invocation
     $basename = $name
@@ -110,7 +110,7 @@ define bontmia::target(
         group   => $bontmia::params::configfile_group,
         mode    => $bontmia::params::configfile_mode,
         content => template('bontmia/backup.sh.erb'),
-        require => Exec['install_bontmia']
+        require => Exec['install_bontmia'],
     }
 
     exec { "mkdir -p ${dest_dir}":
@@ -122,7 +122,7 @@ define bontmia::target(
         owner   => $bontmia::params::configfile_owner,
         group   => $bontmia::params::configfile_group,
         mode    => $bontmia::params::configfile_mode,
-        require => Exec["mkdir -p ${dest_dir}"]
+        require => Exec["mkdir -p ${dest_dir}"],
     }
 
     # cronjob
@@ -135,7 +135,7 @@ define bontmia::target(
         weekday     => $cron_weekday,
         monthday    => $cron_monthday,
         month       => $cron_month,
-        environment => "MAILTO=\"${email}\""
+        environment => "MAILTO=\"${email}\"",
     }
 
 }
