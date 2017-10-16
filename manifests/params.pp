@@ -39,11 +39,8 @@ class bontmia::params {
     #######################################
 
     # ensure the presence (or absence) of bontmia
-    $url = $::bontmia_url ? {
-#       ''      => 'http://folk.uio.no/johnen/bontmia/bontmia-0.14.tar.gz',
-        ''      => 'https://github.com/hcartiaux/bontmia/archive/v0.18.1.tar.gz',
-        default => $::bontmia_url
-    }
+    $url = 'https://github.com/hcartiaux/bontmia/archive/v0.18.1.tar.gz'
+
     # ensure the presence (or absence) of bontmia
     $install_dir = 'bontmia-0.18.1'
 
