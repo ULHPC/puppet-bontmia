@@ -28,12 +28,14 @@ class bontmia::common {
             mode    => $bontmia::params::configfile_mode,
             require => Exec["mkdir -p ${bontmia::prefix}"],
         }
-        -> exec { 'install_bontmia':
+
+        exec { 'install_bontmia':
             command => "curl -Lo - ${bontmia::params::url} | tar xzvf -",
             cwd     => $bontmia::prefix,
             path    => '/usr/bin:/bin:/sbin',
             creates => "${bontmia::prefix}/${bontmia::params::install_dir}",
             user    => $bontmia::params::configfile_owner,
+            require => File[$bontmia::prefix],
         }
 
         # Prepare the log directory

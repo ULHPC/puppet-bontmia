@@ -30,15 +30,9 @@ class bontmia::params {
     ###########################################
 
     # ensure the presence (or absence) of bontmia
-    $ensure = $::bontmia_ensure ? {
-        ''      => 'present',
-        default => $::bontmia_ensure
-    }
+    $ensure = 'present'
 
-    $sudo = $::bontmia_sudo ? {
-        ''      => false,
-        default => $::bontmia_sudo
-    }
+    $sudo = false
 
     #### MODULE INTERNAL VARIABLES  #########
     # (Modify to adapt to unsupported OSes)
@@ -51,10 +45,7 @@ class bontmia::params {
         default => $::bontmia_url
     }
     # ensure the presence (or absence) of bontmia
-    $install_dir = $::bontmia_install_dir ? {
-        ''      => 'bontmia-0.18.1',
-        default => $::bontmia_install_dir
-    }
+    $install_dir = 'bontmia-0.18.1'
 
     # Log directory
     $logdir = $::operatingsystem ? {
