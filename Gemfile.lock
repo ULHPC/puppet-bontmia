@@ -2,7 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     CFPropertyList (2.3.5)
-    activesupport (4.2.9)
+    activesupport (4.2.10)
       i18n (~> 0.7)
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
@@ -86,6 +86,7 @@ GEM
     builder (3.2.3)
     byebug (9.0.6)
     coderay (1.1.2)
+    concurrent-ruby (1.0.5)
     configatron (3.2.0)
     declarative (0.0.10)
     declarative-option (0.1.0)
@@ -312,7 +313,8 @@ GEM
     hocon (1.2.5)
     httpclient (2.8.3)
     hurley (0.2)
-    i18n (0.8.6)
+    i18n (0.9.0)
+      concurrent-ruby (~> 1.0)
     in-parallel (0.1.17)
     inflecto (0.0.2)
     inifile (3.0.0)
