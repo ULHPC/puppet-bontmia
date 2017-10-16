@@ -1,7 +1,7 @@
 {
   "name": "ULHPC/bontmia",
   "version": "0.3.3",
-  "author": "UL HPC Team"
+  "author": "UL HPC Team",
   "mail": "hpc-sysadmins@uni.lu",
   "summary": "Configure and manage bontmia",
   "description": "Configure and manage bontmia",
