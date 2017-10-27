@@ -83,7 +83,10 @@ define bontmia::target(
     $cron_weekday    = '*',
     $cron_monthday   = '*',
     $cron_month      = '*',
-    $email           = ''
+    $email           = '',
+    $backup_owner    = $bontmia::params::configfile_owner,
+    $backup_group    = $bontmia::params::configfile_group,
+    $backup_mode     = $bontmia::params::configfile_mode
 )
 {
     include ::bontmia::params
@@ -119,9 +122,9 @@ define bontmia::target(
     }
     file { $dest_dir:
         ensure  => 'directory',
-        owner   => $bontmia::params::configfile_owner,
-        group   => $bontmia::params::configfile_group,
-        mode    => $bontmia::params::configfile_mode,
+        owner   => $backup_owner,
+        group   => $backup_group,
+        mode    => $backup_mode,
         require => Exec["mkdir -p ${dest_dir}"],
     }
 
