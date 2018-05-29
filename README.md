@@ -9,7 +9,7 @@
 
 Configure and manage bontmia
 
-      Copyright (c) 2017 H. Cartiaux <hpc-sysadmins@uni.lu>
+      Copyright (c) 2018 UL HPC Team <hpc-sysadmins@uni.lu>
       
 
 | [Project Page](https://github.com/ULHPC/puppet-bontmia) | [Sources](https://github.com/ULHPC/puppet-bontmia) | [Documentation](https://ulhpc-puppet-bontmia.readthedocs.org/en/latest/) | [Issues](https://github.com/ULHPC/puppet-bontmia/issues) |
@@ -106,8 +106,8 @@ You can of course configure the bontmia module in your `Puppetfile` to make it a
 or, if you prefer to work on the git version: 
 
      mod "ULHPC/bontmia", 
-         :git => https://github.com/ULHPC/puppet-bontmia,
-         :ref => production 
+         :git => 'https://github.com/ULHPC/puppet-bontmia',
+         :ref => 'production' 
 
 ## Issues / Feature request
 
