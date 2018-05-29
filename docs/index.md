@@ -8,7 +8,7 @@
 [![Documentation Status](https://readthedocs.org/projects/ulhpc-puppet-bontmia/badge/?version=latest)](https://readthedocs.org/projects/ulhpc-puppet-bontmia/?badge=latest)
 [![By ULHPC](https://img.shields.io/badge/by-ULHPC-blue.svg)](http://hpc.uni.lu)
 
-      Copyright (c) 2017 UL HPC Team <hpc-sysadmins@uni.lu>
+      Copyright (c) 2018 UL HPC Team <hpc-sysadmins@uni.lu>
 
 | [Project Page](https://github.com/ULHPC/puppet-bontmia) | [Documentation](http://ulhpc-puppet-bontmia.readthedocs.org/en/latest/) | [Issues](https://github.com/ULHPC/puppet-bontmia/issues) |
 
