@@ -24,6 +24,10 @@
 #   Defines the backup source.
 #   If src_host is not set, it assumes that we want to backup the local directory src_dir
 #
+# [*rotation*]
+#   Default: true
+#   Allow or disable backup rotation
+#
 # [*rotation_days*], [*rotation_weeks*], [*rotation_months*], [*rotation_years*]
 #   Set-up the rotation policy with these values, see the bontmia documentation for more information
 #
@@ -74,6 +78,7 @@ define bontmia::target(
     $src_user        = 'localadmin',
     $src_port        = '8022',
     $ssh_cipher      = 'arcfour',
+    $rotation        = true,
     $rotation_days   = '7',
     $rotation_weeks  = '4',
     $rotation_months = '12',
