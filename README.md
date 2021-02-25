@@ -9,7 +9,7 @@
 
 Configure and manage bontmia
 
-      Copyright (c) 2018 UL HPC Team <hpc-sysadmins@uni.lu>
+      Copyright (c) 2021 UL HPC Team <hpc-sysadmins@uni.lu>
       
 
 | [Project Page](https://github.com/ULHPC/puppet-bontmia) | [Sources](https://github.com/ULHPC/puppet-bontmia) | [Documentation](https://ulhpc-puppet-bontmia.readthedocs.org/en/latest/) | [Issues](https://github.com/ULHPC/puppet-bontmia/issues) |
