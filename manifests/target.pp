@@ -73,28 +73,29 @@
 define bontmia::target(
     $dest_dir,
     $src_dir,
-    $ensure          = 'present',
-    $src_host        = '',
-    $src_user        = 'localadmin',
-    $src_port        = '8022',
-    $ssh_cipher      = 'arcfour',
-    $rotation        = true,
-    $rotation_days   = '7',
-    $rotation_weeks  = '4',
-    $rotation_months = '12',
-    $rotation_years  = '2',
-    $cron_minute     = '4',
-    $cron_hour       = '4',
-    $cron_weekday    = '*',
-    $cron_monthday   = '*',
-    $cron_month      = '*',
-    $email           = '',
-    $backup_owner    = $bontmia::params::configfile_owner,
-    $backup_group    = $bontmia::params::configfile_group,
-    $backup_mode     = $bontmia::params::configfile_mode
+    $ensure           = 'present',
+    $src_host         = '',
+    $src_user         = 'localadmin',
+    $src_port         = '8022',
+    $ssh_cipher       = 'arcfour',
+    $rotation         = true,
+    $rotation_days    = '7',
+    $rotation_weeks   = '4',
+    $rotation_months  = '12',
+    $rotation_years   = '2',
+    $cron_minute      = '4',
+    $cron_hour        = '4',
+    $cron_weekday     = '*',
+    $cron_monthday    = '*',
+    $cron_month       = '*',
+    $cron_environment = '',
+    $email            = '',
+    $backup_owner     = $bontmia::params::configfile_owner,
+    $backup_group     = $bontmia::params::configfile_group,
+    $backup_mode      = $bontmia::params::configfile_mode
 )
 {
-    include ::bontmia::params
+    include bontmia::params
 
     # $name is provided at define invocation
     $basename = $name
@@ -143,7 +144,7 @@ define bontmia::target(
         weekday     => $cron_weekday,
         monthday    => $cron_monthday,
         month       => $cron_month,
-        environment => "MAILTO=\"${email}\"",
+        environment => [ "MAILTO=\"${email}\""] + any2array($cron_environment),
     }
 
 }
