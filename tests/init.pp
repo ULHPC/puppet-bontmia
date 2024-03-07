@@ -17,7 +17,7 @@
 #
 node default {
 
-    class { '::bontmia':
+    class { 'bontmia':
         ensure => 'present',
         prefix => '/tmp/bontmia',
     }

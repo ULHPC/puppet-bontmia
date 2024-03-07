@@ -55,8 +55,8 @@ inherits bontmia::params
     }
 
     case $::operatingsystem {
-        'debian', 'ubuntu':         { include ::bontmia::common::debian }
-        'redhat', 'fedora', 'centos', 'rocky': { include ::bontmia::common::redhat }
+        'debian', 'ubuntu':         { include bontmia::common::debian }
+        'redhat', 'fedora', 'centos', 'rocky': { include bontmia::common::redhat }
         default: {
             fail("Module ${module_name} is not supported on ${::operatingsystem}")
         }

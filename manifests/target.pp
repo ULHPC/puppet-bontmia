@@ -95,7 +95,7 @@ define bontmia::target(
     $backup_mode      = $bontmia::params::configfile_mode
 )
 {
-    include ::bontmia::params
+    include bontmia::params
 
     # $name is provided at define invocation
     $basename = $name

@@ -12,7 +12,7 @@
 class bontmia::common {
 
     # Load the variables used in this module. Check the bontmia-params.pp file
-    require ::bontmia::params
+    require bontmia::params
 
     if $bontmia::ensure == 'present' {
 
