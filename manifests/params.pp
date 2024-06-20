@@ -45,37 +45,37 @@ class bontmia::params {
     $install_dir = 'bontmia-0.18.1'
 
     # Log directory
-    $logdir = $::operatingsystem ? {
+    $logdir = $facts['os']['name'] ? {
         default => '/var/log/bontmia'
     }
-    $logdir_mode = $::operatingsystem ? {
+    $logdir_mode = $facts['os']['name'] ? {
         default => '750',
     }
-    $logdir_owner = $::operatingsystem ? {
+    $logdir_owner = $facts['os']['name'] ? {
         default => 'root',
     }
-    $logdir_group = $::operatingsystem ? {
+    $logdir_group = $facts['os']['name'] ? {
         default => 'adm',
     }
 
-    $configfile = $::operatingsystem ? {
+    $configfile = $facts['os']['name'] ? {
         default => '/etc/bontmia.conf',
     }
-    $configfile_init = $::operatingsystem ? {
+    $configfile_init = $facts['os']['name'] ? {
         /(?i-mx:ubuntu|debian)/ => '/etc/default/bontmia',
         default                 => '/etc/sysconfig/bontmia'
     }
-    $configfile_mode = $::operatingsystem ? {
+    $configfile_mode = $facts['os']['name'] ? {
         default => '0700',
     }
-    $configfile_owner = $::operatingsystem ? {
+    $configfile_owner = $facts['os']['name'] ? {
         default => 'root',
     }
-    $configfile_group = $::operatingsystem ? {
+    $configfile_group = $facts['os']['name'] ? {
         default => 'root',
     }
 
-    $bontmia_user = $::operatingsystem ? {
+    $bontmia_user = $facts['os']['name'] ? {
         default => 'root',
     }
 

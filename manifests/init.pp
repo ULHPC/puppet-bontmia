@@ -54,11 +54,11 @@ inherits bontmia::params
         fail("bontmia 'ensure' parameter must be set to either 'absent' or 'present'")
     }
 
-    case $::operatingsystem {
+    case $facts['os']['name'] {
         'debian', 'ubuntu':         { include bontmia::common::debian }
         'redhat', 'fedora', 'centos', 'rocky': { include bontmia::common::redhat }
         default: {
-            fail("Module ${module_name} is not supported on ${::operatingsystem}")
+            fail("Module ${module_name} is not supported on ${facts['os']['name']}")
         }
     }
 }
