@@ -23,61 +23,58 @@
 # [Remember: No empty lines between comments and class definition]
 #
 class bontmia::params {
+  ######## DEFAULTS FOR VARIABLES USERS CAN SET ##########################
+  # (Here are set the defaults, provide your custom variables externally)
+  # (The default used is in the line with '')
+  ###########################################
 
-    ######## DEFAULTS FOR VARIABLES USERS CAN SET ##########################
-    # (Here are set the defaults, provide your custom variables externally)
-    # (The default used is in the line with '')
-    ###########################################
+  # ensure the presence (or absence) of bontmia
+  $ensure = 'present'
 
-    # ensure the presence (or absence) of bontmia
-    $ensure = 'present'
+  $sudo = false
 
-    $sudo = false
+  #### MODULE INTERNAL VARIABLES  #########
+  # (Modify to adapt to unsupported OSes)
+  #######################################
 
-    #### MODULE INTERNAL VARIABLES  #########
-    # (Modify to adapt to unsupported OSes)
-    #######################################
+  # ensure the presence (or absence) of bontmia
+  $url = 'https://github.com/hcartiaux/bontmia/archive/v0.18.1.tar.gz'
 
-    # ensure the presence (or absence) of bontmia
-    $url = 'https://github.com/hcartiaux/bontmia/archive/v0.18.1.tar.gz'
+  # ensure the presence (or absence) of bontmia
+  $install_dir = 'bontmia-0.18.1'
 
-    # ensure the presence (or absence) of bontmia
-    $install_dir = 'bontmia-0.18.1'
+  # Log directory
+  $logdir = $facts['os']['name'] ? {
+    default => '/var/log/bontmia'
+  }
+  $logdir_mode = $facts['os']['name'] ? {
+    default => '750',
+  }
+  $logdir_owner = $facts['os']['name'] ? {
+    default => 'root',
+  }
+  $logdir_group = $facts['os']['name'] ? {
+    default => 'adm',
+  }
 
-    # Log directory
-    $logdir = $facts['os']['name'] ? {
-        default => '/var/log/bontmia'
-    }
-    $logdir_mode = $facts['os']['name'] ? {
-        default => '750',
-    }
-    $logdir_owner = $facts['os']['name'] ? {
-        default => 'root',
-    }
-    $logdir_group = $facts['os']['name'] ? {
-        default => 'adm',
-    }
+  $configfile = $facts['os']['name'] ? {
+    default => '/etc/bontmia.conf',
+  }
+  $configfile_init = $facts['os']['name'] ? {
+    /(?i-mx:ubuntu|debian)/ => '/etc/default/bontmia',
+    default                 => '/etc/sysconfig/bontmia'
+  }
+  $configfile_mode = $facts['os']['name'] ? {
+    default => '0700',
+  }
+  $configfile_owner = $facts['os']['name'] ? {
+    default => 'root',
+  }
+  $configfile_group = $facts['os']['name'] ? {
+    default => 'root',
+  }
 
-    $configfile = $facts['os']['name'] ? {
-        default => '/etc/bontmia.conf',
-    }
-    $configfile_init = $facts['os']['name'] ? {
-        /(?i-mx:ubuntu|debian)/ => '/etc/default/bontmia',
-        default                 => '/etc/sysconfig/bontmia'
-    }
-    $configfile_mode = $facts['os']['name'] ? {
-        default => '0700',
-    }
-    $configfile_owner = $facts['os']['name'] ? {
-        default => 'root',
-    }
-    $configfile_group = $facts['os']['name'] ? {
-        default => 'root',
-    }
-
-    $bontmia_user = $facts['os']['name'] ? {
-        default => 'root',
-    }
-
+  $bontmia_user = $facts['os']['name'] ? {
+    default => 'root',
+  }
 }
-
