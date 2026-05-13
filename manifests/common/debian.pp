@@ -7,4 +7,4 @@
 # = Class: bontmia::common::debian
 #
 # Specialization class for Debian systems
-class bontmia::common::debian inherits bontmia::common { }
+class bontmia::common::debian inherits bontmia::common {}

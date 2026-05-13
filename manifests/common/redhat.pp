@@ -7,4 +7,4 @@
 # = Class: bontmia::common::redhat
 #
 # Specialization class for Redhat systems
-class bontmia::common::redhat inherits bontmia::common { }
+class bontmia::common::redhat inherits bontmia::common {}

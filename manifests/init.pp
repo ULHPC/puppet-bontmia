@@ -41,25 +41,23 @@
 #
 # [Remember: No empty lines between comments and class definition]
 #
-class bontmia(
-    $prefix,
-    $ensure = $bontmia::params::ensure,
-    $sudo   = $bontmia::params::sudo
+class bontmia (
+  $prefix,
+  $ensure = $bontmia::params::ensure,
+  $sudo   = $bontmia::params::sudo
 )
-inherits bontmia::params
-{
-    info ("Configuring bontmia (with ensure = ${ensure})")
+inherits bontmia::params {
+  info ("Configuring bontmia (with ensure = ${ensure})")
 
-    if ! ($ensure in [ 'present', 'absent' ]) {
-        fail("bontmia 'ensure' parameter must be set to either 'absent' or 'present'")
-    }
+  if ! ($ensure in ['present', 'absent']) {
+    fail("bontmia 'ensure' parameter must be set to either 'absent' or 'present'")
+  }
 
-    case $facts['os']['name'] {
-        'debian', 'ubuntu':         { include bontmia::common::debian }
-        'redhat', 'fedora', 'centos', 'rocky': { include bontmia::common::redhat }
-        default: {
-            fail("Module ${module_name} is not supported on ${facts['os']['name']}")
-        }
+  case $facts['os']['name'] {
+    'debian', 'ubuntu':         { include bontmia::common::debian }
+    'redhat', 'fedora', 'centos', 'rocky': { include bontmia::common::redhat }
+    default: {
+      fail("Module ${module_name} is not supported on ${facts['os']['name']}")
     }
+  }
 }
-
